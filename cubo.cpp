@@ -155,3 +155,158 @@ void rotate_clock(char choice)
     //--------------------------
   }
 }
+
+void white_bottom(char q)
+{
+    if((yellow[0]=='w' && blue[3]==q) || (yellow[2]=='w' && red[3]==q) || (yellow[4]=='w' && green[3]==q) || (yellow[6]=='w' && orange[3]==q))
+    {
+        if(q=='b')
+        {
+            while(blue[3]!=q || yellow[0]!='w')
+            {rotate_clock('y');}
+        }
+        if(q=='r')
+        {
+            while(red[3]!=q || yellow[2]!='w')
+            {rotate_clock('y');}
+            if(q!='b')
+            {
+                while(white[0]!='w' && blue[7]!='b')
+                {rotate_clock('w');}
+            }
+        }
+        if(q=='g')
+        {
+            while(green[3]!=q || yellow[4]!='w')
+            {rotate_clock('y');}
+            if(q!='b')
+            {
+                while(white[0]!='w' && blue[7]!='b')
+                {rotate_clock('w');}
+            }
+        }
+        if(q=='o')
+        {
+            while(orange[3]!=q || yellow[6]!='w')
+            {rotate_clock('y');}
+            if(q!='b')
+            {
+                while(white[0]!='w' && blue[7]!='b')
+                {rotate_clock('w');}
+            }
+        }
+        rotate_clock(q);rotate_clock(q);
+    }
+}
+void right_alg(char a,char c)
+{
+    rotate_clock(a);rotate_clock(a);rotate_clock(a);
+    rotate_clock('y');rotate_clock(a);white_bottom(c);
+}
+void white_right(char q)
+{
+    if(blue[1]=='w' || red[1]=='w' || green[1]=='w' ||orange[1]=='w')
+    {
+        if(blue[5]==q && red[1]=='w')
+        {right_alg('b',q);}
+        if(red[5]==q && green[1]=='w')
+        {right_alg('r',q);}
+        if(green[5]==q && orange[1]=='w')
+        {right_alg('g',q);}
+        if(orange[5]==q && blue[1]=='w')
+        {right_alg('o',q);}
+    }
+}
+void left_alg(char a,char c)
+{
+    rotate_clock(a);rotate_clock('y');rotate_clock(a);
+    rotate_clock(a);rotate_clock(a);white_bottom(c);
+}
+void white_left(char q)
+{
+    if(blue[5]=='w' || red[5]=='w' || green[5]=='w' ||orange[5]=='w')
+    {
+        if(blue[5]=='w' && red[1]==q)
+        {left_alg('r',q);}
+        if(red[5]=='w' && green[1]==q)
+        {left_alg('g',q);}
+        if(green[5]=='w' && orange[1]==q)
+        {left_alg('o',q);}
+        if(orange[5]=='w' && blue[1]==q)
+        {left_alg('b',q);}
+    }
+}
+void top_alg(char a,char b,char c)
+{
+    rotate_clock(a);rotate_clock(a);rotate_clock(a);
+    rotate_clock('w');rotate_clock(b);rotate_clock('w');
+    rotate_clock('w');rotate_clock('w');white_bottom(c);
+}
+void white_top(char q)
+{
+    if(blue[7]=='w' && white[0]==q)
+    {top_alg('b','r',q);}
+    if(red[7]=='w' && white[2]==q)
+    {top_alg('r','g',q);}
+    if(green[7]=='w' && white[4]==q)
+    {top_alg('g','o',q);}
+    if(orange[7]=='w' && white[6]==q)
+    {top_alg('o','b',q);}
+}
+void inv_alg(char a,char b,char c)
+{
+    rotate_clock(a);rotate_clock(b);rotate_clock('y');
+    rotate_clock('y');rotate_clock('y');rotate_clock(b);
+    rotate_clock(b);rotate_clock(b);rotate_clock(a);
+    rotate_clock(a);rotate_clock(a);white_bottom(c);
+}
+void white_bottom_inverted(char q)
+{
+    if(blue[3]=='w' || red[3]=='w' || green[3]=='w' || orange[3]=='w')
+    {
+        if(blue[3]=='w' && yellow[0]==q)
+        {inv_alg('b','r',q);}
+        if(red[3]=='w' && yellow[2]==q)
+        {inv_alg('r','g',q);}
+        if(green[3]=='w' && yellow[4]==q)
+        {inv_alg('g','o',q);}
+        if(orange[3]=='w' && yellow[6]==q)
+        {inv_alg('o','b',q);}
+    }
+}
+
+void solve_white_cross()
+{
+    char prefer[4]={'b','r','g','o'};
+    for(int i=0;i<4;i++)
+    {
+        if(white[0]=='w' && blue[7]==prefer[i]){rotate_clock('b');}
+        if(white[2]=='w' && red[7]==prefer[i]){rotate_clock('r');}
+        if(white[4]=='w' && green[7]==prefer[i]){rotate_clock('g');}
+        if(white[6]=='w' && orange[7]==prefer[i]){rotate_clock('o');}
+        white_bottom(prefer[i]);white_bottom_inverted(prefer[i]);white_left(prefer[i]);white_right(prefer[i]);white_top(prefer[i]);
+        if(i!=0)
+        {while(blue[7]!='b'){rotate_clock('w');}}
+        if(white[0]=='w' && white[2]=='w' && white[4]=='w' && white[6]=='w' &&blue[7]=='b' && red[7]=='r' && green[7]=='g' && orange[7]=='o')
+        {break;}
+    }
+}
+
+void white_corners_alg_left()
+{
+    rotate_clock('b');rotate_clock('b');rotate_clock('b');
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock('b');
+}
+void white_corners_alg_right()
+{
+    rotate_clock('r');
+    rotate_clock('y');
+    rotate_clock('r');rotate_clock('r');rotate_clock('r');
+}
+void solve_white_corners()
+{
+    while(red[0]!='r' || red[6]!='r' || blue[0]!='b' || blue[6]!='b' || orange[0]!='o' || orange[6]!='o' || green[0]!='g' || green[6]!='g')
+    {
+        while(red[7]!='r')
+        {
