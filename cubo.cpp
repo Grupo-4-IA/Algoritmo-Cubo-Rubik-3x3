@@ -622,3 +622,159 @@ void solve_middle_layer()
  ​    } 
  ​} 
  ​void​ ​yellow_corner_orientation_algorithm​()
+{
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('r');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('o');rotate_clock('o');
+    rotate_clock('g');
+    rotate_clock('r');rotate_clock('r');rotate_clock('r');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('o');rotate_clock('o');
+    rotate_clock('g');rotate_clock('g');
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+}
+void yellow_corner_orientation()
+{
+    while(red[2]!='r' || red[4]!='r' || green[2]!='g' || green[4]!='g'
+          || orange[2]!='o' || orange[4]!='o' || blue[2]!='b' || blue[4]!='b')
+    {
+    if((red[2]==red[4]) || (green[2]==green[4]) || (orange[2]==orange[4]) || (blue[2]==blue[4]))
+    {
+        while(orange[2]!=orange[4])
+        {
+            rotate_clock('y');
+        }
+        yellow_corner_orientation_algorithm();
+        while(blue[2]!='b')
+        {
+            rotate_clock('y');
+        }
+    }
+    else
+    {
+        while(orange[4]!='o' && red[4]!='r')
+        {
+            rotate_clock('y');
+        }
+        yellow_corner_orientation_algorithm();
+        while(orange[2]!=orange[4])
+        {
+            rotate_clock('y');
+        }
+        yellow_corner_orientation_algorithm();
+        while(blue[2]!='b')
+        {
+            rotate_clock('y');
+        }
+    }
+    }
+}
+void yellow_edges_colour_arrangement_right()
+{
+    rotate_clock('r');rotate_clock('r');
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('b');
+    rotate_clock('r');rotate_clock('r');
+    rotate_clock('b');rotate_clock('b');rotate_clock('b');
+    rotate_clock('g');
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock('r');rotate_clock('r');
+}
+void yellow_edges_colour_arrangement_left()
+{
+    rotate_clock('r');rotate_clock('r');
+    rotate_clock('y');
+    rotate_clock('b');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('r');rotate_clock('r');
+    rotate_clock('b');rotate_clock('b');rotate_clock('b');
+    rotate_clock('g');
+    rotate_clock('y');
+    rotate_clock('r');rotate_clock('r');
+}
+void yellow_edges_colour_arrangement()
+{
+    while(red[2]!='r')
+    {
+        rotate_clock('r');
+    }
+    if(red[3]=='o' && orange[3]=='r' && blue[3]=='g' && green[3]=='b')
+    {
+        yellow_edges_colour_arrangement_left();
+    }
+    else if(red[3]=='b' && blue[3]=='r')
+    {
+        yellow_edges_colour_arrangement_left();
+    }
+    else if(red[3]=='g' && green[3]=='r')
+    {
+        yellow_edges_colour_arrangement_left();
+    }
+    while(orange[2]!=orange[3])
+    {
+        rotate_clock('y');
+    }
+    if(red[3]==green[2])
+    {
+        yellow_edges_colour_arrangement_right();
+    }
+    else if(red[3]==blue[2])
+    {
+        yellow_edges_colour_arrangement_left();
+    }
+    while(red[3]!='r')
+    {
+        rotate_clock('y');
+    }
+}
+int main()
+{
+  cout<<"________________________| RUBIK'S CUBE SOLVER |________________________"<<endl<<endl;
+  cout<<"Input :"<<endl<<endl;
+  cout<<"White Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>white[i];}
+  cout<<"Red Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>red[i];}
+  cout<<"Orange Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>orange[i];}
+  cout<<"Blue Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>blue[i];}
+  cout<<"Green Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>green[i];}
+  cout<<"Yellow Side : ";
+  for(int i=0;i<9;++i)
+  {cin>>yellow[i];}
+  //-----------------------------------
+  cout<<"\n-------------------------------------------------\n"<<endl;
+  cout<<"Turn these sides of the Cube in Clockwise Direction by 90 degrees in this exact order..."<<endl<<endl;
+  solve_white_cross();
+  solve_white_corners();
+  solve_middle_layer();
+  solve_yellow_cross();
+  solve_yellow_corners();
+  yellow_corner_orientation();
+  yellow_edges_colour_arrangement();
+  //------------------------------------
+  cout<<"\n\n-------------------------------------------------"<<endl<<endl;
+  cout<<"Your Rubik's Cube is now SOLVED!\n\nOutput : "<<endl<<endl;
+  cout<<"White Side : ";
+  display(white);
+  cout<<"Red Side : ";
+  display(red);
+  cout<<"Orange Side : ";
+  display(orange);
+  cout<<"Blue Side : ";
+  display(blue);
+  cout<<"Green Side : ";
+  display(green);
+  cout<<"Yellow Side : ";
+  display(yellow);
+  return 0;
+}
