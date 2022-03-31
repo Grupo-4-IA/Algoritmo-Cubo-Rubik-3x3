@@ -309,4 +309,159 @@ void solve_white_corners()
     while(red[0]!='r' || red[6]!='r' || blue[0]!='b' || blue[6]!='b' || orange[0]!='o' || orange[6]!='o' || green[0]!='g' || green[6]!='g')
     {
         while(red[7]!='r')
+        {            rotate_clock('w');
+        }
+    if(blue[4]=='w' || red[4]=='w' || green[4]=='w' || orange[4]=='w')
+    {
+        while(blue[4]!='w')
         {
+            rotate_clock('y');
+        }
+        while(red[2]!=red[7])
+        {
+            rotate_clock('w');
+        }
+        white_corners_alg_left();
+        while(red[7]!='r')
+        {
+            rotate_clock('w');
+        }
+    }
+    else if(blue[2]=='w' || red[2]=='w' || green[2]=='w' || orange[2]=='w')
+    {
+        while(red[2]!='w')
+        {
+            rotate_clock('y');
+        }
+        while(red[7]!=yellow[1])
+        {
+            rotate_clock('w');
+        }
+        white_corners_alg_right();
+        while(red[7]!='r')
+        {
+            rotate_clock('w');
+        }
+    }
+    else if(yellow[1]=='w' || yellow[3]=='w' || yellow[5]=='w' || yellow[7]=='w')
+    {
+        while(yellow[1]!='w')
+        {
+            rotate_clock('y');
+        }
+        while(red[2]!=blue[7])
+        {
+            rotate_clock('w');
+        }
+        rotate_clock('b');rotate_clock('b');rotate_clock('b');
+        rotate_clock('y');rotate_clock('y');
+        rotate_clock('b');
+        while(blue[4]!='w')
+        {
+            rotate_clock('y');
+        }
+        while(red[2]!=red[7])
+        {
+            rotate_clock('w');
+        }
+        white_corners_alg_left();
+        while(red[7]!='r')
+        {
+            rotate_clock('w');
+        }
+    }
+    else
+    {
+        while(red[7]==red[0])
+        {
+            rotate_clock('w');
+        }
+        white_corners_alg_left();
+        while(red[7]!='r')
+        {
+            rotate_clock('w');
+        }
+    }
+    }
+}
+void middle_place_left_alg(char left,char center)
+{
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock(left);rotate_clock(left);rotate_clock(left);
+    rotate_clock('y');
+    rotate_clock(left);
+    rotate_clock('y');
+    rotate_clock(center);
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock(center);rotate_clock(center);rotate_clock(center);
+
+}
+void middle_place_right_alg(char center,char right)
+{
+    rotate_clock('y');
+    rotate_clock(right);
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock(right);rotate_clock(right);rotate_clock(right);
+    rotate_clock('y');rotate_clock('y');rotate_clock('y');
+    rotate_clock(center);rotate_clock(center);rotate_clock(center);
+    rotate_clock('y');
+    rotate_clock(center);
+}
+void solve_middle_layer()
+{
+    while(red[5]!='r' || red[1]!='r' || blue[1]!='b' || blue[5]!='b' || orange[1]!='o' || orange[5]!='o' || green[1]!='g' || green[5]!='g')
+    {
+        
+        if((orange[1]!='o' && green[5]!='g') && (orange[1]!='y' || green[5]!='y'))
+        {
+            while(green[3]!='y' && yellow[4]!='y')
+            {
+                rotate_clock('y');
+            }
+            middle_place_right_alg('g','o');
+        }
+
+        else if((orange[5]!='o' && blue[1]!='b') && (orange[5]!='y' || blue[1]!='y'))
+        {
+            while(orange[3]!='y' && yellow[6]!='y')
+            {
+                rotate_clock('y');
+            }
+            middle_place_right_alg('o','b');
+        }
+
+        else if((blue[5]!='b' && red[1]!='r') && (blue[5]!='y' || red[1]!='y'))
+        {
+            while(blue[3]!='y' && yellow[0]!='y')
+            {
+                rotate_clock('y');
+            }
+            middle_place_right_alg('b','r');
+        }
+
+        else if((red[5]!='r' && green[1]!='g') && (red[5]!='y' || green[1]!='y'))
+        {
+            while(red[3]!='y' && yellow[2]!='y')
+            {
+                rotate_clock('y');
+            }
+            middle_place_right_alg('r','g');
+        }
+
+        while(red[3]=='y' || yellow[2]=='y')
+        {
+            rotate_clock('y');
+        }
+
+        if(red[3]=='r' && yellow[2]!='y')
+        {
+            if(yellow[2]=='g')
+            {
+                middle_place_right_alg('r','g');
+            }
+            else if(yellow[2]='b')
+            {
+                middle_place_left_alg('b','r');
+            }
+        }
+        else if(red[3]=='b' && yellow[2]!='y')
