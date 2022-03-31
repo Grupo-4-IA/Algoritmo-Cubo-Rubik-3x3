@@ -309,7 +309,8 @@ void solve_white_corners()
     while(red[0]!='r' || red[6]!='r' || blue[0]!='b' || blue[6]!='b' || orange[0]!='o' || orange[6]!='o' || green[0]!='g' || green[6]!='g')
     {
         while(red[7]!='r')
-        {            rotate_clock('w');
+        {
+            rotate_clock('w');
         }
     if(blue[4]=='w' || red[4]=='w' || green[4]=='w' || orange[4]=='w')
     {
@@ -411,7 +412,7 @@ void solve_middle_layer()
 {
     while(red[5]!='r' || red[1]!='r' || blue[1]!='b' || blue[5]!='b' || orange[1]!='o' || orange[5]!='o' || green[1]!='g' || green[5]!='g')
     {
-        
+
         if((orange[1]!='o' && green[5]!='g') && (orange[1]!='y' || green[5]!='y'))
         {
             while(green[3]!='y' && yellow[4]!='y')
@@ -465,163 +466,162 @@ void solve_middle_layer()
             }
         }
         else if(red[3]=='b' && yellow[2]!='y')
- 
- ​        { 
- ​            ​rotate_clock​(​'​y​'​); 
- ​            ​if​(yellow[​0​]==​'​r​'​) 
- ​            { 
- ​                ​middle_place_right_alg​(​'​b​'​,​'​r​'​); 
- ​            } 
- ​            ​else​ ​if​(yellow[​0​]=​'​o​'​) 
- ​            { 
- ​                ​middle_place_left_alg​(​'​o​'​,​'​b​'​); 
- ​            } 
- ​        } 
- ​        ​else​ ​if​(red[​3​]==​'​o​'​ && yellow[​2​]!=​'​y​'​) 
- ​        { 
- ​            ​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​); 
- ​            ​if​(yellow[​6​]==​'​b​'​) 
- ​            { 
- ​                ​middle_place_right_alg​(​'​o​'​,​'​b​'​); 
- ​            } 
- ​            ​else​ ​if​(yellow[​6​]=​'​g​'​) 
- ​            { 
- ​                ​middle_place_left_alg​(​'​g​'​,​'​o​'​); 
- ​            } 
- ​        } 
- ​        ​else​ ​if​(red[​3​]==​'​g​'​ && yellow[​2​]!=​'​y​'​) 
- ​        { 
- ​            ​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​); 
- ​            ​if​(yellow[​4​]==​'​o​'​) 
- ​            { 
- ​                ​middle_place_right_alg​(​'​g​'​,​'​o​'​); 
- ​            } 
- ​            ​else​ ​if​(yellow[​4​]=​'​r​'​) 
- ​            { 
- ​                ​middle_place_left_alg​(​'​r​'​,​'​g​'​); 
- ​            } 
- ​        } 
- ​    } 
- ​} 
- ​void​ ​yellow_cross_algorithm​() 
- ​{ 
- ​        ​rotate_clock​(​'​r​'​); 
- ​        ​rotate_clock​(​'​y​'​); 
- ​        ​rotate_clock​(​'​g​'​); 
- ​        ​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​); 
- ​        ​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​); 
- ​        ​rotate_clock​(​'​r​'​);​rotate_clock​(​'​r​'​);​rotate_clock​(​'​r​'​); 
- ​} 
- ​void​ ​solve_yellow_cross​() 
- ​{ 
- ​    ​while​(yellow[​0​]!=​'​y​'​ || yellow[​2​]!=​'​y​'​ || yellow[​4​]!=​'​y​'​ || yellow[​6​]!=​'​y​'​) 
- ​    { 
- ​        ​if​((yellow[​0​]==​'​y​'​ && yellow[​6​]==​'​y​'​) || (yellow[​4​]==​'​y​'​ && yellow[​6​]==​'​y​'​) 
- ​                || (yellow[​2​]==​'​y​'​ && yellow[​4​]==​'​y​'​) || (yellow[​0​]==​'​y​'​ && yellow[​2​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(yellow[​0​]!=​'​y​'​ && yellow[​6​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_cross_algorithm​(); 
- ​        } 
- ​        ​if​((yellow[​2​]==​'​y​'​ && yellow[​6​]==​'​y​'​) || (yellow[​0​]==​'​y​'​ && yellow[​4​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(yellow[​0​]!=​'​y​'​ && yellow[​4​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_cross_algorithm​(); 
- ​            ​yellow_cross_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​(yellow[​8​]==​'​y​'​) 
- ​        { 
- ​            ​yellow_cross_algorithm​(); 
- ​            ​rotate_clock​(​'​y​'​); 
- ​            ​yellow_cross_algorithm​(); 
- ​            ​yellow_cross_algorithm​(); 
- ​        } 
- ​    } 
- ​} 
- ​void​ ​yellow_corners_algorithm​() 
- ​{ 
- ​    ​rotate_clock​(​'​g​'​); 
- ​    ​rotate_clock​(​'​y​'​); 
- ​    ​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​); 
- ​    ​rotate_clock​(​'​y​'​); 
- ​    ​rotate_clock​(​'​g​'​); 
- ​    ​rotate_clock​(​'​y​'​);​rotate_clock​(​'​y​'​); 
- ​    ​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​);​rotate_clock​(​'​g​'​); 
- ​} 
- ​void​ ​solve_yellow_corners​() 
- ​{ 
- ​    ​while​(yellow[​1​]!=​'​y​'​ || yellow[​3​]!=​'​y​'​  || yellow[​5​]!=​'​y​'​ || yellow[​7​]!=​'​y​'​) 
- ​    { 
- ​        ​if​((yellow[​1​]==​'​y​'​ && yellow[​3​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​ && yellow[​7​]!=​'​y​'​) 
- ​           || (yellow[​3​]==​'​y​'​ && yellow[​1​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​ && yellow[​7​]!=​'​y​'​) 
- ​           || (yellow[​5​]==​'​y​'​ && yellow[​1​]!=​'​y​'​ && yellow[​3​]!=​'​y​'​ && yellow[​7​]!=​'​y​'​) 
- ​           || (yellow[​7​]==​'​y​'​ && yellow[​1​]!=​'​y​'​ && yellow[​3​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​)) 
- ​        { 
- ​            ​while​(yellow[​1​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​((green[​2​]==​'​y​'​ && green[​4​]==​'​y​'​ && yellow[​1​]==​'​y​'​ && yellow[​7​]==​'​y​'​) 
- ​                || (orange[​2​]==​'​y​'​ && orange[​4​]==​'​y​'​ && yellow[​1​]==​'​y​'​ && yellow[​3​]==​'​y​'​) 
- ​                || (blue[​2​]==​'​y​'​ && blue[​4​]==​'​y​'​ && yellow[​3​]==​'​y​'​ && yellow[​5​]==​'​y​'​) 
- ​                || (red[​2​]==​'​y​'​ && red[​4​]==​'​y​'​ && yellow[​5​]==​'​y​'​ && yellow[​7​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(red[​2​]!=​'​y​'​ && red[​4​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​ && yellow[​7​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​((red[​4​]==​'​y​'​ && orange[​2​]==​'​y​'​ && yellow[​1​]==​'​y​'​ && yellow[​7​]==​'​y​'​) 
- ​                || (blue[​2​]==​'​y​'​ && green[​4​]==​'​y​'​ && yellow[​1​]==​'​y​'​ && yellow[​3​]==​'​y​'​) 
- ​                || (red[​2​]==​'​y​'​ && orange[​4​]==​'​y​'​ && yellow[​3​]==​'​y​'​ && yellow[​5​]==​'​y​'​) 
- ​                || (blue[​4​]==​'​y​'​ && green[​2​]==​'​y​'​ && yellow[​5​]==​'​y​'​ && yellow[​7​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(red[​2​]!=​'​y​'​ && orange[​4​]!=​'​y​'​ && yellow[​3​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​((green[​2​]==​'​y​'​ && green[​4​]==​'​y​'​ && blue[​2​]==​'​y​'​ && blue[​4​]==​'​y​'​) 
- ​            || (red[​2​]==​'​y​'​ && red[​4​]==​'​y​'​ && orange[​2​]==​'​y​'​ && orange[​4​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(green[​2​]!=​'​y​'​ && green[​4​]!=​'​y​'​ && blue[​2​]!=​'​y​'​ && blue[​4​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​((green[​2​]==​'​y​'​ && orange[​2​]==​'​y​'​ && orange[​4​]==​'​y​'​ && blue[​4​]==​'​y​'​) 
- ​            || (red[​4​]==​'​y​'​ && orange[​2​]==​'​y​'​ && blue[​2​]==​'​y​'​ && blue[​4​]==​'​y​'​) 
- ​            || (red[​2​]==​'​y​'​ && red[​4​]==​'​y​'​ && green[​4​]==​'​y​'​ && blue[​2​]==​'​y​'​) 
- ​            || (green[​2​]==​'​y​'​ && green[​4​]==​'​y​'​ && orange[​4​]==​'​y​'​ && red[​2​]==​'​y​'​)) 
- ​        { 
- ​            ​while​(green[​2​]!=​'​y​'​ && orange[​2​]!=​'​y​'​ && orange[​4​]!=​'​y​'​ && blue[​4​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​        ​else​ ​if​((yellow[​1​]==​'​y​'​ && yellow[​5​]==​'​y​'​ && yellow[​3​]!=​'​y​'​ && yellow[​7​]!=​'​y​'​) 
- ​            || (yellow[​3​]==​'​y​'​ && yellow[​7​]==​'​y​'​ && yellow[​1​]!=​'​y​'​ && yellow[​5​]!=​'​y​'​)) 
- ​        { 
- ​            ​while​(red[​2​]!=​'​y​'​ && green[​4​]!=​'​y​'​) 
- ​            { 
- ​                ​rotate_clock​(​'​y​'​); 
- ​            } 
- ​            ​yellow_corners_algorithm​(); 
- ​        } 
- ​    } 
- ​} 
- ​void​ ​yellow_corner_orientation_algorithm​()
+        {
+            rotate_clock('y');
+            if(yellow[0]=='r')
+            {
+                middle_place_right_alg('b','r');
+            }
+            else if(yellow[0]='o')
+            {
+                middle_place_left_alg('o','b');
+            }
+        }
+        else if(red[3]=='o' && yellow[2]!='y')
+        {
+            rotate_clock('y');rotate_clock('y');
+            if(yellow[6]=='b')
+            {
+                middle_place_right_alg('o','b');
+            }
+            else if(yellow[6]='g')
+            {
+                middle_place_left_alg('g','o');
+            }
+        }
+        else if(red[3]=='g' && yellow[2]!='y')
+        {
+            rotate_clock('y');rotate_clock('y');rotate_clock('y');
+            if(yellow[4]=='o')
+            {
+                middle_place_right_alg('g','o');
+            }
+            else if(yellow[4]='r')
+            {
+                middle_place_left_alg('r','g');
+            }
+        }
+    }
+}
+void yellow_cross_algorithm()
+{
+        rotate_clock('r');
+        rotate_clock('y');
+        rotate_clock('g');
+        rotate_clock('y');rotate_clock('y');rotate_clock('y');
+        rotate_clock('g');rotate_clock('g');rotate_clock('g');
+        rotate_clock('r');rotate_clock('r');rotate_clock('r');
+}
+void solve_yellow_cross()
+{
+    while(yellow[0]!='y' || yellow[2]!='y' || yellow[4]!='y' || yellow[6]!='y')
+    {
+        if((yellow[0]=='y' && yellow[6]=='y') || (yellow[4]=='y' && yellow[6]=='y')
+                || (yellow[2]=='y' && yellow[4]=='y') || (yellow[0]=='y' && yellow[2]=='y'))
+        {
+            while(yellow[0]!='y' && yellow[6]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_cross_algorithm();
+        }
+        if((yellow[2]=='y' && yellow[6]=='y') || (yellow[0]=='y' && yellow[4]=='y'))
+        {
+            while(yellow[0]!='y' && yellow[4]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_cross_algorithm();
+            yellow_cross_algorithm();
+        }
+        else if(yellow[8]=='y')
+        {
+            yellow_cross_algorithm();
+            rotate_clock('y');
+            yellow_cross_algorithm();
+            yellow_cross_algorithm();
+        }
+    }
+}
+void yellow_corners_algorithm()
+{
+    rotate_clock('g');
+    rotate_clock('y');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+    rotate_clock('y');
+    rotate_clock('g');
+    rotate_clock('y');rotate_clock('y');
+    rotate_clock('g');rotate_clock('g');rotate_clock('g');
+}
+void solve_yellow_corners()
+{
+    while(yellow[1]!='y' || yellow[3]!='y'  || yellow[5]!='y' || yellow[7]!='y')
+    {
+        if((yellow[1]=='y' && yellow[3]!='y' && yellow[5]!='y' && yellow[7]!='y')
+           || (yellow[3]=='y' && yellow[1]!='y' && yellow[5]!='y' && yellow[7]!='y')
+           || (yellow[5]=='y' && yellow[1]!='y' && yellow[3]!='y' && yellow[7]!='y')
+           || (yellow[7]=='y' && yellow[1]!='y' && yellow[3]!='y' && yellow[5]!='y'))
+        {
+            while(yellow[1]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+        else if((green[2]=='y' && green[4]=='y' && yellow[1]=='y' && yellow[7]=='y')
+                || (orange[2]=='y' && orange[4]=='y' && yellow[1]=='y' && yellow[3]=='y')
+                || (blue[2]=='y' && blue[4]=='y' && yellow[3]=='y' && yellow[5]=='y')
+                || (red[2]=='y' && red[4]=='y' && yellow[5]=='y' && yellow[7]=='y'))
+        {
+            while(red[2]!='y' && red[4]!='y' && yellow[5]!='y' && yellow[7]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+        else if((red[4]=='y' && orange[2]=='y' && yellow[1]=='y' && yellow[7]=='y')
+                || (blue[2]=='y' && green[4]=='y' && yellow[1]=='y' && yellow[3]=='y')
+                || (red[2]=='y' && orange[4]=='y' && yellow[3]=='y' && yellow[5]=='y')
+                || (blue[4]=='y' && green[2]=='y' && yellow[5]=='y' && yellow[7]=='y'))
+        {
+            while(red[2]!='y' && orange[4]!='y' && yellow[3]!='y' && yellow[5]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+        else if((green[2]=='y' && green[4]=='y' && blue[2]=='y' && blue[4]=='y')
+            || (red[2]=='y' && red[4]=='y' && orange[2]=='y' && orange[4]=='y'))
+        {
+            while(green[2]!='y' && green[4]!='y' && blue[2]!='y' && blue[4]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+        else if((green[2]=='y' && orange[2]=='y' && orange[4]=='y' && blue[4]=='y')
+            || (red[4]=='y' && orange[2]=='y' && blue[2]=='y' && blue[4]=='y')
+            || (red[2]=='y' && red[4]=='y' && green[4]=='y' && blue[2]=='y')
+            || (green[2]=='y' && green[4]=='y' && orange[4]=='y' && red[2]=='y'))
+        {
+            while(green[2]!='y' && orange[2]!='y' && orange[4]!='y' && blue[4]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+        else if((yellow[1]=='y' && yellow[5]=='y' && yellow[3]!='y' && yellow[7]!='y')
+            || (yellow[3]=='y' && yellow[7]=='y' && yellow[1]!='y' && yellow[5]!='y'))
+        {
+            while(red[2]!='y' && green[4]!='y')
+            {
+                rotate_clock('y');
+            }
+            yellow_corners_algorithm();
+        }
+    }
+}
+void yellow_corner_orientation_algorithm()
 {
     rotate_clock('g');rotate_clock('g');rotate_clock('g');
     rotate_clock('r');
